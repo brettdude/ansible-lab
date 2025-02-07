@@ -17,6 +17,27 @@
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
 
+  - name: add sudoers file for brettdude
+    tags: always
+    ansible.builtin.copy:
+      src: sudoer_brettdude
+      dest: /etc/sudoers.d/brettdude
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ssh key for brettdude
+    tags: always
+    ansible.builtin.authorized_key:
+      user: brettdude
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICg1Cpt6TYUMCGwF1yBObxwN/lvQtX1rg3zswYs12Kqp clarkey@ansible01"
+
+  - name: create user
+    tags: always
+    ansible.builtin.user:
+      name: brettdude
+      groups: root
+
 - hosts: web_servers
   tags: apache,ubuntu
   become: true
