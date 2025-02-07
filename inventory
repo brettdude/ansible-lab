@@ -1,2 +1,5 @@
-ubuntu10 apache_package=apache2 php_package=libapache2-mod-php
-fedora10 apache_package=httpd php_package=php
+[web_servers]
+ubuntu10
+
+[db_servers]
+fedora10
