@@ -1,5 +1,6 @@
 [web_servers]
 ubuntu10
+fedora10
 
 [db_servers]
 fedora10
